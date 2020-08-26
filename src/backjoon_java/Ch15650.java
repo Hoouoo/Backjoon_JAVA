@@ -1,10 +1,11 @@
 package backjoon_java;
 import java.util.Scanner;
-public class Ch15649 {
+public class Ch15650 {
 	
 	static int N,M;
 	static int graph[];
 	static boolean check[]; 
+	static int flag;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -13,24 +14,24 @@ public class Ch15649 {
 		
 		check= new boolean[9];
 		graph = new int [9];
-		dfs(0);
+		dfs(1,0);
 	}
 	
-	public static void dfs(int cnt) {
+	public static void dfs(int flag,int cnt) {
 		
-		if(cnt==M) {
+		if(cnt==M) { 
 			for(int i=0;i<M;i++) {
 				System.out.print(graph[i]+" ");
 			}
 			System.out.println();
 			return;
-		}
+		} 
 		
-		for(int i = 1 ; i<=N; i++) {
-			if(check[i]==true) continue;
-			check[i]=true;
+		for(int i = flag; i<=N; i++) {
+     			if(check[i]==true) continue;
+ 			check[i]=true;
 			graph[cnt]=i;
-			dfs(cnt+1);
+			dfs(i,cnt+1);
 			check[i]=false;
 		}
 	}
